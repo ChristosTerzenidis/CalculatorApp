@@ -39,61 +39,58 @@ public class MainActivity extends AppCompatActivity {
         display = findViewById(R.id.input);
         display.setShowSoftInputOnFocus(false);
 
-        display.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                if(getString(R.string.display).equals(display.getText().toString())){
-                    display.setText("");
-                }
+        display.setOnClickListener(v -> {
+            if(getString(R.string.display).equals(display.getText().toString())){
+                display.setText("");
             }
         });
 
         divideBTN.setOnClickListener(v-> {
             try {
-                x=Double.valueOf(display.getText().toString());
+                x=Double.parseDouble(display.getText().toString());
                 display.setText(null);
                 flag='/';
 
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         });
 
 
         exponentBTN.setOnClickListener(v->{try {
-            x=Double.valueOf(display.getText().toString());
+            x=Double.parseDouble(display.getText().toString());
             display.setText(null);
             flag='^';
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         });
         multiplyBTN.setOnClickListener(v->{try {
-            x=Double.valueOf(display.getText().toString());
+            x=Double.parseDouble(display.getText().toString());
             display.setText(null);
             flag='*';
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         });
         subtractBTN.setOnClickListener(v->{try {
-            x=Double.valueOf(display.getText().toString());
+            x=Double.parseDouble(display.getText().toString());
             display.setText(null);
             flag='-';
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         });
         addBTN.setOnClickListener(v->{try {
-            x=Double.valueOf(display.getText().toString());
+            x=Double.parseDouble(display.getText().toString());
             display.setText(null);
             flag='+';
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         });
 
@@ -101,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         equalsBTN.setOnClickListener(v->{
             try{
                 double result=0;
-                y=Double.valueOf(display.getText().toString());
+                y=Double.parseDouble(display.getText().toString());
                    switch (flag){
                        case '^':
                             result=Math.pow(x,y);
@@ -120,15 +117,11 @@ public class MainActivity extends AppCompatActivity {
                            break;
                 }
                 display.setText(String.valueOf(result));
-
-
             }
             catch (Exception e){
                 e.printStackTrace();
             }
         });
-
-
     }
 
     private void updateText(String strToAdd){
