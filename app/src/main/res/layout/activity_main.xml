@@ -92,7 +92,6 @@
                 android:background="@drawable/circle"
                 android:onClick="eightBtn"
                 android:text="@string/eight"
-                android:textColor="#FFFFFF"
                 android:textSize="23sp" />
 
             <Button
