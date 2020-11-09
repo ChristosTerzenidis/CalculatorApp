@@ -8,13 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
 import java.util.ArrayList;
 
 /**
  * The type Main activity.
  */
 public class MainActivity extends AppCompatActivity {
-    Button divideBTN,exponentBTN,multiplyBTN,subtractBTN,addBTN,equalsBTN;
+    Button divideBTN,exponentBTN,multiplyBTN,subtractBTN,addBTN,equalsBTN, clearbtn;
+    ImageButton backspace;
 
     private EditText display;
 
@@ -34,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         subtractBTN=findViewById(R.id.subtractBTN);
         addBTN=findViewById(R.id.addBTN);
         equalsBTN=findViewById(R.id.equalsBTN);
-
+        clearbtn = findViewById(R.id.clearBTN);
+        backspace = findViewById(R.id.button25);
 
         display = findViewById(R.id.input);
         display.setShowSoftInputOnFocus(false);
@@ -94,6 +98,23 @@ public class MainActivity extends AppCompatActivity {
         }
         });
 
+        clearbtn.setOnClickListener(v -> {
+            try {
+                display.setText(" ");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        });
+
+        backspace.setOnClickListener(v -> {
+            try{
+                display.setText(display.getText().toString().substring(0,display.getText().toString().length()-1));
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        });
 
         equalsBTN.setOnClickListener(v->{
             try{
@@ -232,6 +253,4 @@ public class MainActivity extends AppCompatActivity {
     public void nineBtn(View view){
         updateText("9");
     }
-
-
 }
